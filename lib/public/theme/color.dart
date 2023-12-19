@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColor {
   // main color
-  static Color? mainColor = Color.fromARGB(255, 52, 134, 227);
+  static Color mainColor = Color.fromARGB(255, 52, 134, 227);
   static Color? subColor = Color(0xffff7643);
   static Color? warning = const Color(0xFFF81D1D);
 

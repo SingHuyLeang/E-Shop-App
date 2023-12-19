@@ -5,3 +5,5 @@ export 'views/search/search_screen.dart';
 export 'views/menu/menu_screen.dart';
 export 'views/notification/notification_screen.dart';
 export 'views/profile/profile_screen.dart';
+export 'views_model/app_bottom_nav_bar.dart';
+export 'views_model/category_viewer.dart';
