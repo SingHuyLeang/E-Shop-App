@@ -16,7 +16,7 @@ class AppBottomNavBar extends StatelessWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       enableFeedback: false,
-      unselectedItemColor: Colors.grey[700],
+      unselectedItemColor: Theme.of(context).colorScheme.onSecondary,
       selectedItemColor: AppColor.mainColor,
       selectedLabelStyle: TextStyle(
         fontSize: getFontSize(width: 12),
@@ -39,7 +39,7 @@ class AppBottomNavBar extends StatelessWidget {
             width: getProportionateScreenWidht(width: 23),
             height: getProportionateScreenHeight(height: 23),
             'assets/icons/svg/home.svg',
-            color: Colors.grey[700],
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
           activeIcon: SvgPicture.asset(
             width: getProportionateScreenWidht(width: 23),
@@ -54,7 +54,7 @@ class AppBottomNavBar extends StatelessWidget {
             width: getProportionateScreenWidht(width: 23),
             height: getProportionateScreenHeight(height: 23),
             'assets/icons/svg/search.svg',
-            color: Colors.grey[700],
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
           activeIcon: SvgPicture.asset(
             width: getProportionateScreenWidht(width: 23),
@@ -69,7 +69,7 @@ class AppBottomNavBar extends StatelessWidget {
             width: getProportionateScreenWidht(width: 23),
             height: getProportionateScreenHeight(height: 23),
             'assets/icons/svg/profile.svg',
-            color: Colors.grey[700],
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
           activeIcon: SvgPicture.asset(
             width: getProportionateScreenWidht(width: 23),
@@ -84,7 +84,7 @@ class AppBottomNavBar extends StatelessWidget {
             width: getProportionateScreenWidht(width: 23),
             height: getProportionateScreenHeight(height: 23),
             'assets/icons/svg/notification.svg',
-            color: Colors.grey[700],
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
           activeIcon: SvgPicture.asset(
             width: getProportionateScreenWidht(width: 23),
@@ -99,7 +99,7 @@ class AppBottomNavBar extends StatelessWidget {
             width: getProportionateScreenWidht(width: 23),
             height: getProportionateScreenHeight(height: 23),
             'assets/icons/svg/menu.svg',
-            color: Colors.grey[700],
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
           activeIcon: SvgPicture.asset(
             width: getProportionateScreenWidht(width: 23),

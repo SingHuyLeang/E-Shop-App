@@ -32,7 +32,7 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
       bottomNavigationBar: Container(
         width: double.infinity,
         height: getProportionateScreenHeight(height: 60),
-        margin: EdgeInsets.all(getProportionateScreenWidht(width: 18)),
+        margin: EdgeInsets.all(getProportionateScreenWidht(width: 16)),
         decoration: BoxDecoration(
           color: Colors.grey.shade300,
           borderRadius: BorderRadius.circular(22),

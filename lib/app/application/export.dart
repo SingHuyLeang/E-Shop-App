@@ -7,3 +7,7 @@ export 'views/notification/notification_screen.dart';
 export 'views/profile/profile_screen.dart';
 export 'views_model/app_bottom_nav_bar.dart';
 export 'views_model/category_viewer.dart';
+export 'views_model/app_bar.dart';
+export 'views_model/ads_sliders.dart';
+export 'views_model/product_hot_release.dart';
+export 'views_model/catch_network_img.dart';

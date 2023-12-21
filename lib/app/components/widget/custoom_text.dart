@@ -13,7 +13,7 @@ class AppText extends StatelessWidget {
     this.softWrap,
     this.overflow,
     this.maxLines,
-    this.onTap,
+    this.onTap, this.shadows,
   }) : super(key: key);
   final String text;
   final String? font;
@@ -25,6 +25,7 @@ class AppText extends StatelessWidget {
   final TextOverflow? overflow;
   final int? maxLines;
   final void Function()? onTap;
+  final List<Shadow>? shadows;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -35,6 +36,7 @@ class AppText extends StatelessWidget {
           fontFamily: font ?? FontName.barlow,
           fontSize: fontSize,
           color: color,
+          shadows: shadows,
           fontWeight: fontWeight,
         ),
         textAlign: textAlign,
