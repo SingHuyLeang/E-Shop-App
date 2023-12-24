@@ -13,7 +13,8 @@ class AppText extends StatelessWidget {
     this.softWrap,
     this.overflow,
     this.maxLines,
-    this.onTap, this.shadows,
+    this.onTap,
+    this.shadows,
   }) : super(key: key);
   final String text;
   final String? font;
@@ -35,7 +36,7 @@ class AppText extends StatelessWidget {
         style: TextStyle(
           fontFamily: font ?? FontName.barlow,
           fontSize: fontSize,
-          color: color,
+          color: color ?? Theme.of(context).colorScheme.onPrimary,
           shadows: shadows,
           fontWeight: fontWeight,
         ),

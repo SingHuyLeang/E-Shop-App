@@ -1,5 +1,8 @@
 import 'package:e_store_app/app/application/export.dart';
-import 'package:e_store_app/app/application/services/screen_helper.dart';
+import 'package:e_store_app/app/application/views_model/popular_product.dart';
+import 'package:e_store_app/app/components/widget/custoom_text.dart';
+import 'package:e_store_app/public/configs/size_config.dart';
+import 'package:e_store_app/public/delaytime.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -35,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: CustomScrollView(
+        controller: scrollController,
         slivers: <Widget>[
           // app bar
           ShopAppBar(),
@@ -45,10 +49,62 @@ class _HomeScreenState extends State<HomeScreen> {
           // Hot release
           ProductHotRelease(),
           // Popular
+          PopularProduct(),
           // specail
-          // other
+          SpecailForYou(),
+          // All Product
+          SliverPadding(
+            padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenWidht(width: 10),
+            ),
+            sliver: SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      AppText(text: 'List', fontSize: getFontSize(width: 20)),
+                      AppText(text: 'Grid', fontSize: getFontSize(width: 20)),
+                    ],
+                  ),
+                  CustomPaint(
+                    painter: UnderlinePainter(
+                      Theme.of(context).colorScheme.onPrimary,
+                      1.1,
+                    ),
+                    size: Size(double.infinity, 1.1),
+                  )
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
+  }
+}
+
+class UnderlinePainter extends CustomPainter {
+  final Color lineColor;
+  final double lineHeight;
+
+  UnderlinePainter(this.lineColor, this.lineHeight);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()
+      ..color = lineColor
+      ..strokeWidth = lineHeight;
+
+    canvas.drawLine(
+      Offset(0, size.height),
+      Offset(size.width, size.height),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
