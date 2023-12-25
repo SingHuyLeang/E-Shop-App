@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_store_app/app/application/views_model/catch_network_img.dart';
+import 'package:e_store_app/app/application/export.dart';
 import 'package:e_store_app/app/components/export.dart';
 import 'package:e_store_app/public/configs/size_config.dart';
 import 'package:e_store_app/public/theme/color.dart';
@@ -15,8 +15,7 @@ class AdsSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        width: double.infinity,
-        height: getProportionateScreenHeight(height: 220),
+        color: Theme.of(context).colorScheme.background,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -29,11 +28,11 @@ class AdsSlider extends StatelessWidget {
                 children: [
                   AppText(
                     text: 'Special Day',
-                    fontSize: getFontSize(width: 20),
+                    fontSize: getFontSize(width: 24),
                   ),
                   AppText(
                     text: 'See more',
-                    fontSize: getFontSize(width: 14),
+                    fontSize: getFontSize(width: 16),
                     color: AppColor.darkSecondary,
                   )
                 ],
@@ -54,35 +53,6 @@ class AdsSlider extends StatelessWidget {
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
-
-                // CachedNetworkImage(
-                //   imageUrl: ads[index],
-                //   imageBuilder: (context, imageProvider) => Container(
-                //     width: double.infinity,
-                //     decoration: BoxDecoration(
-                // border: Border.all(
-                //   color: Theme.of(context).colorScheme.secondary,
-                // ),
-                //       borderRadius: BorderRadius.circular(
-                //         getProportionateScreenWidht(width: 16),
-                //       ),
-                //       image: DecorationImage(
-                //         image: imageProvider,
-                //         fit: BoxFit.fill,
-                //       ),
-                //     ),
-                //   ),
-                //   placeholder: (context, url) => Container(
-                //     color: Theme.of(context).colorScheme.primary,
-                //     alignment: Alignment.center,
-                //     child: LottieBuilder.asset(
-                //       'assets/icons/json/waiting.json',
-                //       width: getProportionateScreenWidht(width: 100),
-                //       height: getProportionateScreenHeight(height: 100),
-                //     ),
-                //   ),
-                //   errorWidget: (context, url, error) => Icon(Icons.error),
-                // ),
               ),
               options: CarouselOptions(
                 height: getProportionateScreenHeight(height: 170),
@@ -100,6 +70,7 @@ class AdsSlider extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
               ),
             ),
+            Gap(getProportionateScreenHeight(height: 15)),
           ],
         ),
       ),

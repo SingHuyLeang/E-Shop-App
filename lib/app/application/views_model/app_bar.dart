@@ -1,4 +1,3 @@
-
 import 'package:e_store_app/app/components/export.dart';
 import 'package:e_store_app/public/configs/size_config.dart';
 import 'package:e_store_app/public/font_name.dart';
@@ -27,7 +26,7 @@ class ShopAppBar extends StatelessWidget {
           AppText(
             text: 'E-Shop',
             font: FontName.outfit,
-            fontSize: getFontSize(width: 26),
+            fontSize: getFontSize(width: 28),
             color: AppColor.lightText,
           ),
         ],

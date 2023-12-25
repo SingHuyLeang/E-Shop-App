@@ -1,22 +1,22 @@
 import 'package:e_store_app/app/application/export.dart';
 import 'package:e_store_app/app/components/export.dart';
-import 'package:e_store_app/public/export.dart';
+import 'package:e_store_app/public/configs/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-class SpecailForYou extends StatefulWidget {
-  const SpecailForYou({super.key});
+class ProductHotRelease extends StatefulWidget {
+  const ProductHotRelease({super.key});
+
   @override
-  State<SpecailForYou> createState() => _SpecailForYouState();
+  State<ProductHotRelease> createState() => _ProductHotReleaseState();
 }
 
-class _SpecailForYouState extends State<SpecailForYou> {
-  final productController = Get.put(ProductSevice());
-  final pageController = PageController(viewportFraction: 1, keepPage: false);
+class _ProductHotReleaseState extends State<ProductHotRelease> {
   bool favorite = false;
+  final pageController = PageController(viewportFraction: 1, keepPage: false);
+  final productController = Get.put(ProductSevice());
   int index = 0;
-
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -37,7 +37,7 @@ class _SpecailForYouState extends State<SpecailForYou> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppText(
-                    text: 'Special for you',
+                    text: 'New Product',
                     fontSize: getFontSize(width: 24),
                     color: Theme.of(context).colorScheme.onPrimary,
                   ),
@@ -54,7 +54,7 @@ class _SpecailForYouState extends State<SpecailForYou> {
               width: double.infinity,
               height: getProportionateScreenHeight(height: 260),
               child: PageView.builder(
-                itemCount: productController.spacialProduct.length,
+                itemCount: productController.newProduct.length,
                 controller: pageController,
                 onPageChanged: (value) {
                   setState(() {
@@ -62,7 +62,7 @@ class _SpecailForYouState extends State<SpecailForYou> {
                   });
                 },
                 itemBuilder: (context, pIndex) => ViewNetworkImage(
-                  url: productController.spacialProduct[index].image,
+                  url: productController.newProduct[index].image,
                   width: double.infinity,
                   height: getProportionateScreenHeight(height: 210),
                   margin: EdgeInsets.symmetric(
@@ -77,8 +77,9 @@ class _SpecailForYouState extends State<SpecailForYou> {
               ),
             ),
             Indicator(
-                pageController: pageController,
-                count: productController.spacialProduct.length),
+              pageController: pageController,
+              count: productController.newProduct.length,
+            ),
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(
@@ -93,13 +94,12 @@ class _SpecailForYouState extends State<SpecailForYou> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         AppText(
-                          text: productController.spacialProduct[index].name,
+                          text: productController.newProduct[index].name,
                           color: Theme.of(context).colorScheme.onPrimary,
                           fontSize: getFontSize(width: 22),
                         ),
                         AppText(
-                          text: productController
-                              .spacialProduct[index].descrpition,
+                          text: productController.newProduct[index].descrpition,
                           color: Theme.of(context).colorScheme.onPrimary,
                           fontSize: getFontSize(width: 18),
                         ),

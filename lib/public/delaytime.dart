@@ -7,3 +7,7 @@ Future delayTime({required int milliseconds}) async {
 const Duration defaultDuration = Duration(milliseconds: 300);
 
 late ScrollController scrollController;
+
+DateTime date(String createAt) {
+  return DateTime.parse(createAt);
+}

@@ -11,7 +11,7 @@ class AppText extends StatelessWidget {
     this.fontWeight,
     this.textAlign,
     this.softWrap,
-    this.overflow,
+    this.overflow = TextOverflow.fade,
     this.maxLines,
     this.onTap,
     this.shadows,

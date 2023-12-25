@@ -1,7 +1,4 @@
 import 'package:e_store_app/app/application/export.dart';
-import 'package:e_store_app/app/application/views_model/popular_product.dart';
-import 'package:e_store_app/app/components/widget/custoom_text.dart';
-import 'package:e_store_app/public/configs/size_config.dart';
 import 'package:e_store_app/public/delaytime.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,6 +30,41 @@ class _HomeScreenState extends State<HomeScreen> {
     'https://img.freepik.com/free-vector/realistic-ad-template-natural-cream_23-2148255735.jpg?w=1060&t=st=1703043542~exp=1703044142~hmac=ffdbd44d95bb858d6b3e986dd6842bd89845f0d7892eb6451a7521533b391e3d',
   ];
 
+  final productController = Get.put(ProductSevice());
+
+  void findProductHotRelease() {
+    DateTime sevenDaysAgo = DateTime.now().subtract(Duration(days: 7));
+    productController.newProduct = productController.product
+        .where((product) => date(product.createAt).isAfter(sevenDaysAgo))
+        .toList()
+        .obs;
+  }
+
+  void findSpecailProduct() {
+    productController.spacialProduct = productController.product
+        .where(
+            (product) => product.type.toLowerCase() == 'special'.toLowerCase())
+        .toList()
+        .obs;
+  }
+
+  void findPopularProduct() {
+    productController.popular = productController.product
+        .where((product) => product.rating >= 80)
+        .toList()
+        .obs;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    findProductHotRelease();
+    findSpecailProduct();
+    findPopularProduct();
+  }
+
+  bool viewAsList = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,58 +85,22 @@ class _HomeScreenState extends State<HomeScreen> {
           // specail
           SpecailForYou(),
           // All Product
-          SliverPadding(
-            padding: EdgeInsets.symmetric(
-              horizontal: getProportionateScreenWidht(width: 10),
-            ),
-            sliver: SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      AppText(text: 'List', fontSize: getFontSize(width: 20)),
-                      AppText(text: 'Grid', fontSize: getFontSize(width: 20)),
-                    ],
-                  ),
-                  CustomPaint(
-                    painter: UnderlinePainter(
-                      Theme.of(context).colorScheme.onPrimary,
-                      1.1,
-                    ),
-                    size: Size(double.infinity, 1.1),
-                  )
-                ],
-              ),
-            ),
+          AllProduct(
+            onTapList: () {
+              setState(() {
+                viewAsList = true;
+              });
+            },
+            onTapGrid: () {
+              setState(() {
+                viewAsList = false;
+              });
+            },
+            listView: viewAsList,
           ),
+          viewAsList ? ListProduct() : GridProduct(),
         ],
       ),
     );
-  }
-}
-
-class UnderlinePainter extends CustomPainter {
-  final Color lineColor;
-  final double lineHeight;
-
-  UnderlinePainter(this.lineColor, this.lineHeight);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Paint paint = Paint()
-      ..color = lineColor
-      ..strokeWidth = lineHeight;
-
-    canvas.drawLine(
-      Offset(0, size.height),
-      Offset(size.width, size.height),
-      paint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
   }
 }
