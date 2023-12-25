@@ -54,7 +54,9 @@ class _SpecailForYouState extends State<SpecailForYou> {
               width: double.infinity,
               height: getProportionateScreenHeight(height: 260),
               child: PageView.builder(
-                itemCount: productController.spacialProduct.length,
+                itemCount: productController.spacialProduct.length > 5
+                    ? 5
+                    : productController.spacialProduct.length,
                 controller: pageController,
                 onPageChanged: (value) {
                   setState(() {
@@ -77,8 +79,11 @@ class _SpecailForYouState extends State<SpecailForYou> {
               ),
             ),
             Indicator(
-                pageController: pageController,
-                count: productController.spacialProduct.length),
+              pageController: pageController,
+              count: productController.spacialProduct.length > 5
+                  ? 5
+                  : productController.spacialProduct.length,
+            ),
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(

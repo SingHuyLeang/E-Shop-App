@@ -55,7 +55,9 @@ class _PopularProductState extends State<PopularProduct> {
               width: double.infinity,
               height: getProportionateScreenHeight(height: 260),
               child: PageView.builder(
-                itemCount: productController.popular.length,
+                itemCount: productController.popular.length > 5
+                    ? 5
+                    : productController.popular.length,
                 controller: pageController,
                 onPageChanged: (value) {
                   setState(() {
@@ -79,7 +81,9 @@ class _PopularProductState extends State<PopularProduct> {
             ),
             Indicator(
               pageController: pageController,
-              count: productController.popular.length,
+              count: productController.popular.length > 5
+                  ? 5
+                  : productController.popular.length,
             ),
             Container(
               width: double.infinity,

@@ -11,7 +11,9 @@ class ViewNetworkImage extends StatelessWidget {
     this.height,
     this.margin,
     this.borderRadius,
-    this.fit, this.border,
+    this.fit,
+    this.border,
+    this.child, this.color,
   });
 
   final String url;
@@ -21,6 +23,8 @@ class ViewNetworkImage extends StatelessWidget {
   final BorderRadiusGeometry? borderRadius;
   final BoxFit? fit;
   final BoxBorder? border;
+  final Widget? child;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
@@ -38,9 +42,10 @@ class ViewNetworkImage extends StatelessWidget {
             fit: fit,
           ),
         ),
+        child: child,
       ),
       placeholder: (context, url) => Container(
-        color: Theme.of(context).colorScheme.primary,
+        color: color ?? Theme.of(context).colorScheme.primary,
         alignment: Alignment.center,
         child: LottieBuilder.asset(
           'assets/icons/json/waiting.json',

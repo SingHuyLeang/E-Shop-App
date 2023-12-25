@@ -54,7 +54,9 @@ class _ProductHotReleaseState extends State<ProductHotRelease> {
               width: double.infinity,
               height: getProportionateScreenHeight(height: 260),
               child: PageView.builder(
-                itemCount: productController.newProduct.length,
+                itemCount: productController.newProduct.length > 5
+                    ? 5
+                    : productController.newProduct.length,
                 controller: pageController,
                 onPageChanged: (value) {
                   setState(() {
@@ -78,7 +80,9 @@ class _ProductHotReleaseState extends State<ProductHotRelease> {
             ),
             Indicator(
               pageController: pageController,
-              count: productController.newProduct.length,
+              count: productController.newProduct.length > 5
+                  ? 5
+                  : productController.newProduct.length,
             ),
             Container(
               width: double.infinity,

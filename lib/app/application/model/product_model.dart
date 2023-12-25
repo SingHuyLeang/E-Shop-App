@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:e_store_app/app/application/export.dart';
@@ -10,6 +9,7 @@ class ProductModel {
   String descrpition;
   double price;
   int qty;
+  int discount;
   String image;
   String type;
   int rating;
@@ -24,6 +24,7 @@ class ProductModel {
     required this.descrpition,
     required this.price,
     required this.qty,
+    required this.discount,
     required this.image,
     required this.type,
     required this.rating,
@@ -40,6 +41,7 @@ class ProductModel {
       ProductKey.descrpition: descrpition,
       ProductKey.price: price,
       ProductKey.qty: qty,
+
       ProductKey.image: image,
       ProductKey.type: type,
       ProductKey.rating: rating,
@@ -49,7 +51,6 @@ class ProductModel {
     };
   }
 
-
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
       id: map[ProductKey.id] as int,
@@ -58,6 +59,7 @@ class ProductModel {
       descrpition: map[ProductKey.descrpition] as String,
       price: map[ProductKey.price] as double,
       qty: map[ProductKey.qty] as int,
+      discount: map[ProductKey.discount] as int,
       image: map[ProductKey.image] as String,
       type: map[ProductKey.type] as String,
       rating: map[ProductKey.rating] as int,
@@ -69,5 +71,6 @@ class ProductModel {
 
   String toJson() => json.encode(toMap());
 
-  factory ProductModel.fromJson(String source) => ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ProductModel.fromJson(String source) =>
+      ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

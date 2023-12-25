@@ -11,4 +11,5 @@ class ProductKey {
   static String favorite = 'favorite';
   static String outStock = 'outStock';
   static String createAt = 'createAt';
+  static String discount = 'discount';
 }

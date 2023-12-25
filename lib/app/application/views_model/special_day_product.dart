@@ -5,11 +5,12 @@ import 'package:e_store_app/public/configs/size_config.dart';
 import 'package:e_store_app/public/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
-class AdsSlider extends StatelessWidget {
-  const AdsSlider({super.key, required this.ads});
+class SpecialDayProduct extends StatelessWidget {
+  SpecialDayProduct({super.key});
 
-  final List<String> ads;
+  final productController = Get.put(ProductSevice());
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +42,13 @@ class AdsSlider extends StatelessWidget {
             Gap(getProportionateScreenHeight(height: 16)),
             CarouselSlider(
               items: List.generate(
-                ads.length,
+                productController.spacialDay.length > 5
+                    ? 5
+                    : productController.spacialDay.length,
                 (index) => ViewNetworkImage(
-                  url: ads[index],
+                  url: productController.spacialDay[index].image,
                   width: double.infinity,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.fitWidth,
                   borderRadius: BorderRadius.circular(
                     getProportionateScreenWidht(width: 16),
                   ),

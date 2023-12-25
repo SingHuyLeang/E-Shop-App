@@ -8,7 +8,7 @@ export 'views/profile/profile_screen.dart';
 export 'views_model/app_bottom_nav_bar.dart';
 export 'views_model/category_viewer.dart';
 export 'views_model/app_bar.dart';
-export 'views_model/ads_sliders.dart';
+export 'views_model/special_day_product.dart';
 export 'views_model/product_new_release.dart';
 export 'views/components/catch_network_image.dart';
 export 'services/list_screen.dart';
