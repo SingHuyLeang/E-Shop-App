@@ -16,6 +16,7 @@ class Themes {
       primary: AppColor.lightPrimary,
       secondary: AppColor.lightSecondary,
       onPrimary: AppColor.darkBG,
+      onSecondary: AppColor.darkSecondary,
     ),
   );
   ThemeData dark = ThemeData(
@@ -32,6 +33,7 @@ class Themes {
       primary: AppColor.darkPrimary,
       secondary: AppColor.darkSecondary,
       onPrimary: AppColor.lightBG,
+      onSecondary: AppColor.lightSecondary,
     ),
   );
 }

@@ -14,13 +14,12 @@ class PopularProduct extends StatefulWidget {
 
 class _PopularProductState extends State<PopularProduct> {
   final productController = Get.put(ProductSevice());
-
   final pageController = PageController(viewportFraction: 1, keepPage: false);
-  bool favorite = false;
   int index = 0;
 
   @override
   Widget build(BuildContext context) {
+    final product = productController.popular;
     return SliverToBoxAdapter(
       child: Container(
         margin: EdgeInsets.symmetric(
@@ -55,9 +54,7 @@ class _PopularProductState extends State<PopularProduct> {
               width: double.infinity,
               height: getProportionateScreenHeight(height: 260),
               child: PageView.builder(
-                itemCount: productController.popular.length > 5
-                    ? 5
-                    : productController.popular.length,
+                itemCount: product.length > 5 ? 5 : product.length,
                 controller: pageController,
                 onPageChanged: (value) {
                   setState(() {
@@ -65,7 +62,7 @@ class _PopularProductState extends State<PopularProduct> {
                   });
                 },
                 itemBuilder: (context, pIndex) => ViewNetworkImage(
-                  url: productController.popular[index].image,
+                  url: product[index].image,
                   width: double.infinity,
                   height: getProportionateScreenHeight(height: 210),
                   margin: EdgeInsets.symmetric(
@@ -81,9 +78,7 @@ class _PopularProductState extends State<PopularProduct> {
             ),
             Indicator(
               pageController: pageController,
-              count: productController.popular.length > 5
-                  ? 5
-                  : productController.popular.length,
+              count: product.length > 5 ? 5 : product.length,
             ),
             Container(
               width: double.infinity,
@@ -99,14 +94,16 @@ class _PopularProductState extends State<PopularProduct> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         AppText(
-                          text: productController.popular[index].name,
+                          text: product[index].name,
                           color: Theme.of(context).colorScheme.onPrimary,
                           fontSize: getFontSize(width: 22),
                         ),
+                        Gap(getProportionateScreenHeight(height: 10)),
                         AppText(
-                          text: productController.popular[index].descrpition,
+                          text: product[index].descrpition,
                           color: Theme.of(context).colorScheme.onPrimary,
                           fontSize: getFontSize(width: 18),
+                          overflow: TextOverflow.clip,
                         ),
                       ],
                     ),
@@ -117,11 +114,11 @@ class _PopularProductState extends State<PopularProduct> {
                       context: context,
                       onTapFavorite: () {
                         setState(() {
-                          favorite = !favorite;
+                          product[index].favorite = !product[index].favorite;
                         });
                       },
                       onTapComment: () {},
-                      favorite: favorite,
+                      favorite: product[index].favorite,
                     ),
                   ),
                 ],

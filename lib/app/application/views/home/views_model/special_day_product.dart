@@ -55,6 +55,21 @@ class SpecialDayProduct extends StatelessWidget {
                   border: Border.all(
                     color: Theme.of(context).colorScheme.primary,
                   ),
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      top: getProportionateScreenHeight(height: 8),
+                      right: getProportionateScreenWidht(width: 10),
+                      bottom: getProportionateScreenHeight(height: 8),
+                      left: getProportionateScreenWidht(width: 10),
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(16),
+                        bottomLeft: Radius.circular(16),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               options: CarouselOptions(

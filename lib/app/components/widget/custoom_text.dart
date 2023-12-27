@@ -15,6 +15,7 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.onTap,
     this.shadows,
+    this.textDirection, this.decorationColor, this.decorationThickness,
   }) : super(key: key);
   final String text;
   final String? font;
@@ -27,6 +28,9 @@ class AppText extends StatelessWidget {
   final int? maxLines;
   final void Function()? onTap;
   final List<Shadow>? shadows;
+  final TextDecoration? textDirection;
+  final Color? decorationColor;
+  final double? decorationThickness;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -39,11 +43,14 @@ class AppText extends StatelessWidget {
           color: color ?? Theme.of(context).colorScheme.onPrimary,
           shadows: shadows,
           fontWeight: fontWeight,
+          decoration: textDirection,
+          decorationColor: decorationColor,
+          decorationThickness: decorationThickness,
         ),
         textAlign: textAlign,
         softWrap: softWrap,
         overflow: overflow,
-        maxLines: maxLines,
+        maxLines: maxLines ?? 2,
       ),
     );
   }

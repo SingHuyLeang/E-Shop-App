@@ -64,6 +64,7 @@ class AllProduct extends StatelessWidget {
                 ],
               ),
             ),
+            Gap(getProportionateScreenWidht(width: 15)),
           ],
         ),
       ),

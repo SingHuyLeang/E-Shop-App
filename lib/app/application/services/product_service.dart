@@ -71,7 +71,8 @@ class ProductSevice extends GetxController {
       id: 5,
       category: 'Clothing',
       name: 'T-Shirt',
-      descrpition: 'Black sweater apparel shoot with design space',
+      descrpition:
+          'ColorLog is a colorful Flutter logging package with emojis for more expressive and readable logs, simplifying debugging.',
       price: 20.00,
       qty: 2500,
       discount: 10,

@@ -13,7 +13,10 @@ class ViewNetworkImage extends StatelessWidget {
     this.borderRadius,
     this.fit,
     this.border,
-    this.child, this.color,
+    this.child,
+    this.color,
+    this.alignment,
+    this.padding,
   });
 
   final String url;
@@ -25,6 +28,8 @@ class ViewNetworkImage extends StatelessWidget {
   final BoxBorder? border;
   final Widget? child;
   final Color? color;
+  final Alignment? alignment;
+  final EdgeInsetsGeometry? padding;
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
@@ -33,6 +38,8 @@ class ViewNetworkImage extends StatelessWidget {
         width: width,
         height: height,
         margin: margin,
+        alignment: alignment,
+        padding: padding,
         decoration: BoxDecoration(
           border: border,
           color: Theme.of(context).colorScheme.primary,

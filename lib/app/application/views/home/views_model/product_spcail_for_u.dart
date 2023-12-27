@@ -1,24 +1,24 @@
 import 'package:e_store_app/app/application/export.dart';
 import 'package:e_store_app/app/components/export.dart';
-import 'package:e_store_app/public/configs/size_config.dart';
+import 'package:e_store_app/public/export.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-class ProductHotRelease extends StatefulWidget {
-  const ProductHotRelease({super.key});
-
+class SpecailForYou extends StatefulWidget {
+  const SpecailForYou({super.key});
   @override
-  State<ProductHotRelease> createState() => _ProductHotReleaseState();
+  State<SpecailForYou> createState() => _SpecailForYouState();
 }
 
-class _ProductHotReleaseState extends State<ProductHotRelease> {
-  bool favorite = false;
-  final pageController = PageController(viewportFraction: 1, keepPage: false);
+class _SpecailForYouState extends State<SpecailForYou> {
   final productController = Get.put(ProductSevice());
+  final pageController = PageController(viewportFraction: 1, keepPage: false);
   int index = 0;
+
   @override
   Widget build(BuildContext context) {
+    final product = productController.spacialDay;
     return SliverToBoxAdapter(
       child: Container(
         margin: EdgeInsets.symmetric(
@@ -37,7 +37,7 @@ class _ProductHotReleaseState extends State<ProductHotRelease> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppText(
-                    text: 'New Product',
+                    text: 'Special for you',
                     fontSize: getFontSize(width: 24),
                     color: Theme.of(context).colorScheme.onPrimary,
                   ),
@@ -54,9 +54,7 @@ class _ProductHotReleaseState extends State<ProductHotRelease> {
               width: double.infinity,
               height: getProportionateScreenHeight(height: 260),
               child: PageView.builder(
-                itemCount: productController.newProduct.length > 5
-                    ? 5
-                    : productController.newProduct.length,
+                itemCount: product.length > 5 ? 5 : product.length,
                 controller: pageController,
                 onPageChanged: (value) {
                   setState(() {
@@ -64,7 +62,7 @@ class _ProductHotReleaseState extends State<ProductHotRelease> {
                   });
                 },
                 itemBuilder: (context, pIndex) => ViewNetworkImage(
-                  url: productController.newProduct[index].image,
+                  url: product[index].image,
                   width: double.infinity,
                   height: getProportionateScreenHeight(height: 210),
                   margin: EdgeInsets.symmetric(
@@ -80,9 +78,7 @@ class _ProductHotReleaseState extends State<ProductHotRelease> {
             ),
             Indicator(
               pageController: pageController,
-              count: productController.newProduct.length > 5
-                  ? 5
-                  : productController.newProduct.length,
+              count: product.length > 5 ? 5 : product.length,
             ),
             Container(
               width: double.infinity,
@@ -98,14 +94,16 @@ class _ProductHotReleaseState extends State<ProductHotRelease> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         AppText(
-                          text: productController.newProduct[index].name,
+                          text: product[index].name,
                           color: Theme.of(context).colorScheme.onPrimary,
                           fontSize: getFontSize(width: 22),
                         ),
+                        Gap(getProportionateScreenHeight(height: 10)),
                         AppText(
-                          text: productController.newProduct[index].descrpition,
+                          text: product[index].descrpition,
                           color: Theme.of(context).colorScheme.onPrimary,
                           fontSize: getFontSize(width: 18),
+                          overflow: TextOverflow.clip,
                         ),
                       ],
                     ),
@@ -116,17 +114,16 @@ class _ProductHotReleaseState extends State<ProductHotRelease> {
                       context: context,
                       onTapFavorite: () {
                         setState(() {
-                          favorite = !favorite;
+                          product[index].favorite = !product[index].favorite;
                         });
                       },
                       onTapComment: () {},
-                      favorite: favorite,
+                      favorite: product[index].favorite,
                     ),
                   ),
                 ],
               ),
             ),
-            Gap(getProportionateScreenHeight(height: 15)),
           ],
         ),
       ),

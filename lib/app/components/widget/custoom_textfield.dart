@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 class AppTextFiled extends StatelessWidget {
   const AppTextFiled({
     super.key,
-    this.height,
     required this.controller,
     this.radius,
     this.hintText,
@@ -22,10 +21,11 @@ class AppTextFiled extends StatelessWidget {
     this.keyboardType,
     this.style,
     this.borderColor,
-    this.textAlign, this.inputFormatters,
+    this.textAlign,
+    this.inputFormatters,
+    this.floatingLabelBehavior,
   });
 
-  final double? height;
   final TextEditingController controller;
   final double? radius;
   final String? hintText;
@@ -41,6 +41,7 @@ class AppTextFiled extends StatelessWidget {
   final Color? borderColor;
   final TextAlign? textAlign;
   final List<TextInputFormatter>? inputFormatters;
+  final FloatingLabelBehavior? floatingLabelBehavior;
   @override
   Widget build(BuildContext context) {
     Color? color = (borderColor != null)
@@ -56,7 +57,8 @@ class AppTextFiled extends StatelessWidget {
       textAlign: textAlign ?? TextAlign.start,
       decoration: InputDecoration(
         hintText: hintText,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
+        floatingLabelBehavior:
+            floatingLabelBehavior ?? FloatingLabelBehavior.always,
         suffixIcon: suffixIcons,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius ?? 16),
@@ -64,7 +66,9 @@ class AppTextFiled extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius ?? 16),
-          borderSide: BorderSide(color: color ?? AppColor.darkBG),
+          borderSide: BorderSide(
+            color: color ?? Theme.of(context).colorScheme.onSecondary,
+          ),
         ),
         hintStyle: TextStyle(
           fontFamily: FontName.barlow,
