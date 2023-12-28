@@ -23,3 +23,7 @@ export 'services/product_key.dart';
 export 'services/product_service.dart';
 export 'views/home/views_model/grid_product.dart';
 export 'views/home/views_model/popular_product.dart';
+export 'views/search/view_model/list_of_history.dart';
+export 'views/search/model/list_history.dart';
+export 'views/search/service/search_controller.dart';
+export 'views/search/view_model/list_of_product.dart';

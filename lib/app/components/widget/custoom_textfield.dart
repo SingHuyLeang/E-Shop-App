@@ -24,6 +24,7 @@ class AppTextFiled extends StatelessWidget {
     this.textAlign,
     this.inputFormatters,
     this.floatingLabelBehavior,
+    this.onFieldSubmitted,
   });
 
   final TextEditingController controller;
@@ -42,6 +43,8 @@ class AppTextFiled extends StatelessWidget {
   final TextAlign? textAlign;
   final List<TextInputFormatter>? inputFormatters;
   final FloatingLabelBehavior? floatingLabelBehavior;
+  final void Function(String)? onFieldSubmitted;
+
   @override
   Widget build(BuildContext context) {
     Color? color = (borderColor != null)
@@ -84,6 +87,7 @@ class AppTextFiled extends StatelessWidget {
       validator: validator,
       onChanged: onChanged,
       inputFormatters: inputFormatters,
+      onFieldSubmitted: onFieldSubmitted,
     );
   }
 }

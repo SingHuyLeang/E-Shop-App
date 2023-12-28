@@ -57,7 +57,7 @@ class CategoryViewer extends StatelessWidget {
                     softWrap: true,
                     maxLines: 2,
                     overflow: TextOverflow.fade,
-                    fontSize: getFontSize(width: 16),
+                    fontSize: getFontSize(width: 14),
                   ),
                 ),
               ],
